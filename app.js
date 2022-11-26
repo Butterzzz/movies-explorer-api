@@ -1,7 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const router = require('./routes/index');
+const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { errorsHandler } = require('./middlewares/errorsHandler');
+const router = require('./routes/index');
 
 const { PORT = 3002 } = process.env;
 const app = express();
@@ -15,8 +17,8 @@ app.use(requestLogger); // логгер запросов
 app.use(router);
 
 app.use(errorLogger); // логгер ошибок
-// тут будет обработчик ошибок celebrate
-// тут будет централизованный обработчик ошибок
+app.use(errors()); // обработчик ошибок celebrate
+app.use(errorsHandler); // централизованная обработка ошибок
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
