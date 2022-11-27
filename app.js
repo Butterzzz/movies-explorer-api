@@ -9,10 +9,10 @@ const { errorsHandler } = require('./middlewares/errorsHandler');
 const cors = require('./middlewares/cors');
 const router = require('./routes/index');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, DATABASE = 'mongodb://localhost:27017/moviesdb' } = process.env;
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/moviesdb');
+mongoose.connect(DATABASE);
 
 app.use(express.json());
 app.use(requestLogger); // логгер запросов
