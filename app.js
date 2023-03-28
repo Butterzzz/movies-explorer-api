@@ -9,7 +9,7 @@ const { errorsHandler } = require('./middlewares/errorsHandler');
 const cors = require('./middlewares/cors');
 const router = require('./routes/index');
 
-const { PORT = 3000, DATABASE = 'mongodb://localhost:27017/moviesdb' } = process.env;
+const { PORT = 3001, DATABASE = 'mongodb://127.0.0.1:27017/moviesdb' } = process.env;
 const app = express();
 
 mongoose.connect(DATABASE);

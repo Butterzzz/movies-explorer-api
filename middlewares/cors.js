@@ -3,7 +3,7 @@ const allowedCors = [
   'https://movies-explorer.gss.nomoredomains.club',
   'http://api.movies-explorer.gss.nomoredomains.club',
   'http://movies-explorer.gss.nomoredomains.club',
-  'http://localhost:3000',
+  'http://127.0.0.1:3001',
 ];
 
 const cors = (req, res, next) => {
